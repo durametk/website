@@ -17,6 +17,7 @@ const contactSchema = z.object({
   email: z.string().trim().email("Please enter a valid email").max(255, "Email must be less than 255 characters"),
   phone: z.string().trim().min(10, "Please enter a valid phone number").max(20, "Phone number is too long"),
   industry: z.string().min(1, "Please select an industry"),
+  product: z.string().optional(),
   requirement: z.string().trim().min(10, "Please describe your requirement (at least 10 characters)").max(1000, "Requirement must be less than 1000 characters"),
 });
 
@@ -50,6 +51,7 @@ const ContactSection = ({ prefilledIndustry, prefilledProduct, isProductNotListe
       email: "",
       phone: "",
       industry: prefilledIndustry || "",
+      product: prefilledProduct || "",
       requirement: defaultRequirement,
     },
   });
@@ -75,6 +77,7 @@ const ContactSection = ({ prefilledIndustry, prefilledProduct, isProductNotListe
         email: "",
         phone: "",
         industry: prefilledIndustry || "",
+        product: "",
         requirement: "",
       });
     } catch (error) {
@@ -115,8 +118,11 @@ const ContactSection = ({ prefilledIndustry, prefilledProduct, isProductNotListe
                 </div>
                 <div>
                   <h4 className="font-heading font-semibold text-foreground mb-1">Phone</h4>
-                  <a href="tel:+919686118846" className="text-muted-foreground hover:text-accent transition-colors">
-                    +91 96861 18846
+                  <a href="tel:+919686118846" className="text-muted-foreground hover:text-accent transition-colors block">
+                    +91-9686118846
+                  </a>
+                  <a href="tel:08049723882" className="text-muted-foreground hover:text-accent transition-colors block text-sm">
+                    080-49723882
                   </a>
                 </div>
               </div>
@@ -127,8 +133,11 @@ const ContactSection = ({ prefilledIndustry, prefilledProduct, isProductNotListe
                 </div>
                 <div>
                   <h4 className="font-heading font-semibold text-foreground mb-1">Email</h4>
-                  <a href="mailto:karthik.ramesh@duramettechnologies.com" className="text-muted-foreground hover:text-accent transition-colors text-sm">
-                    karthik.ramesh@duramettechnologies.com
+                  <a href="mailto:enquiry@duramettechnologies.com" className="text-muted-foreground hover:text-accent transition-colors block">
+                    enquiry@duramettechnologies.com
+                  </a>
+                  <a href="mailto:sales@duramettechnologies.com" className="text-muted-foreground hover:text-accent transition-colors block text-sm">
+                    sales@duramettechnologies.com
                   </a>
                 </div>
               </div>
@@ -140,8 +149,8 @@ const ContactSection = ({ prefilledIndustry, prefilledProduct, isProductNotListe
                 <div>
                   <h4 className="font-heading font-semibold text-foreground mb-1">Address</h4>
                   <p className="text-muted-foreground">
-                    No 39, Ejipura Main Road, Near 24th Cross,<br />
-                    Ejipura, Bengaluru 560047
+                    #39, Ejipura Main Road, Near 24th Cross,<br />
+                    Ejipura, Bangalore – 560047
                   </p>
                 </div>
               </div>

@@ -1,29 +1,28 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, Car, Plane, Droplet, Zap, Truck } from "lucide-react";
+import { ArrowRight, Car, Plane, Zap, Cpu, Train } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { industries } from "@/data/industries";
 
 import automotiveImg from "@/assets/industry-automotive.jpg";
 import aerospaceImg from "@/assets/industry-aerospace.jpg";
-import oilGasImg from "@/assets/industry-oil-gas.jpg";
 import powerImg from "@/assets/industry-power.jpg";
 import machineryImg from "@/assets/industry-heavy-machinery.jpg";
 
 const iconMap: { [key: string]: React.ReactNode } = {
   car: <Car className="h-8 w-8" />,
   plane: <Plane className="h-8 w-8" />,
-  droplet: <Droplet className="h-8 w-8" />,
   zap: <Zap className="h-8 w-8" />,
-  truck: <Truck className="h-8 w-8" />,
+  cpu: <Cpu className="h-8 w-8" />,
+  train: <Train className="h-8 w-8" />,
 };
 
 const imageMap: { [key: string]: string } = {
   automotive: automotiveImg,
-  aerospace: aerospaceImg,
-  "oil-gas": oilGasImg,
-  "power-generation": powerImg,
-  "heavy-machinery": machineryImg,
+  "aerospace-defence": aerospaceImg,
+  "power-industrial": powerImg,
+  components: automotiveImg,
+  rail: machineryImg,
 };
 
 const IndustriesSection = () => {
@@ -45,7 +44,7 @@ const IndustriesSection = () => {
             Industries We Serve
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            From automotive to aerospace, we provide tailored solutions for diverse industrial sectors
+            Duramet Technologies delivers 360-degree solutions for PCB and electronic manufacturing across diverse sectors
           </p>
         </motion.div>
 
@@ -67,7 +66,7 @@ const IndustriesSection = () => {
                   {/* Image */}
                   <div className="relative h-48 overflow-hidden">
                     <img
-                      src={imageMap[industry.slug]}
+                      src={imageMap[industry.slug] || automotiveImg}
                       alt={industry.name}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     />

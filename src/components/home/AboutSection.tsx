@@ -1,12 +1,12 @@
 import { motion } from "framer-motion";
-import { Award, Users, Clock, Target } from "lucide-react";
+import { Award, Users, Clock, Building } from "lucide-react";
 
 const AboutSection = () => {
   const stats = [
-    { icon: <Award className="h-6 w-6" />, value: "25+", label: "Years Experience" },
-    { icon: <Users className="h-6 w-6" />, value: "500+", label: "Happy Clients" },
-    { icon: <Clock className="h-6 w-6" />, value: "24/7", label: "Support" },
-    { icon: <Target className="h-6 w-6" />, value: "99%", label: "Quality Rate" },
+    { icon: <Building className="h-6 w-6" />, value: "2025", label: "Established" },
+    { icon: <Users className="h-6 w-6" />, value: "5+", label: "Industries Served" },
+    { icon: <Clock className="h-6 w-6" />, value: "Mon-Sat", label: "10AM - 6:30PM" },
+    { icon: <Award className="h-6 w-6" />, value: "100%", label: "Quality Focus" },
   ];
 
   return (
@@ -24,17 +24,17 @@ const AboutSection = () => {
               About Duramet Technologies
             </span>
             <h2 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-foreground mb-6">
-              Your Trusted Industrial Partner Since Day One
+              Your Specialized Partner for Advanced Materials
             </h2>
             <div className="space-y-4 text-muted-foreground leading-relaxed">
               <p>
-                Duramet Technologies is a premier industrial distributor and solutions provider based in Bengaluru, India. We specialize in delivering high-quality precision components and engineering solutions to manufacturers across diverse sectors.
+                Duramet Technologies is a specialized distributor and solution partner for advanced materials and electronic components serving the electronics industry. We focus on thermal management, circuit board protection, gasketing, bonding, and low-pressure molding solutions.
               </p>
               <p>
-                Founded by industry veterans with decades of experience in industrial supply chains, we understand the critical importance of quality, reliability, and timely delivery in manufacturing operations. Our extensive network of global manufacturers enables us to source the best products at competitive prices.
+                By collaborating with globally recognized manufacturers, we help customers improve product reliability, efficiency, and longevity. Our technical expertise supports customers from material selection to production implementation across demanding applications.
               </p>
               <p>
-                Led by <strong className="text-foreground">Karthik Ramesh</strong>, our Managing Director, who brings extensive expertise in industrial distribution and customer relationship management, we are committed to being more than just a supplier – we aim to be your strategic partner in growth.
+                <strong className="text-foreground">Karthik Ramesh</strong>, Founder & Managing Director, brings hands-on experience in electronic materials distribution and application-based solution selling. With strong exposure to thermal management, circuit protection, bonding, and component technologies, he has worked closely with OEMs, EMS providers, and design teams. His focus is on delivering reliable, cost-effective material solutions aligned with customer performance and production requirements.
               </p>
             </div>
           </motion.div>

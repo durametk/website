@@ -1,16 +1,16 @@
 import { motion } from "framer-motion";
 
 const PartnersCarousel = () => {
-  // Partner companies - using placeholder names for industrial companies
+  // Associated brands
   const partners = [
-    { name: "Bosch", logo: "BOSCH" },
-    { name: "SKF", logo: "SKF" },
-    { name: "Siemens", logo: "SIEMENS" },
-    { name: "ABB", logo: "ABB" },
-    { name: "Schneider", logo: "SCHNEIDER" },
-    { name: "Honeywell", logo: "HONEYWELL" },
-    { name: "Rockwell", logo: "ROCKWELL" },
-    { name: "Parker", logo: "PARKER" },
+    { name: "PDC", logo: "PDC" },
+    { name: "Henkel", logo: "HENKEL" },
+    { name: "3M", logo: "3M" },
+    { name: "Walsin", logo: "WALSIN" },
+    { name: "Kamaya", logo: "KAMAYA" },
+    { name: "Prosperity", logo: "PROSPERITY" },
+    { name: "Frontier", logo: "FRONTIER" },
+    { name: "Nitsuku", logo: "NITSUKU" },
   ];
 
   // Duplicate for seamless loop
@@ -27,10 +27,10 @@ const PartnersCarousel = () => {
           className="text-center"
         >
           <h2 className="font-heading font-bold text-2xl md:text-3xl text-foreground mb-3">
-            Trusted by Industry Leaders
+            Associated with World-Class Manufacturers
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto">
-            We partner with world-renowned manufacturers to bring you the best industrial solutions
+            We partner with globally recognized manufacturers to deliver reliable, high-performance material solutions
           </p>
         </motion.div>
       </div>

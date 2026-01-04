@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Mail, Phone, MapPin, Linkedin, Facebook, Twitter } from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin } from "lucide-react";
 import logo from "@/assets/logo.jpg";
 
 const Footer = () => {
@@ -14,7 +14,7 @@ const Footer = () => {
               <span className="font-heading font-bold text-xl">Duramet Technologies</span>
             </Link>
             <p className="text-secondary-foreground/80 leading-relaxed">
-              Your trusted industrial distributor and solution partner for precision components and engineering excellence.
+              Specialized distributor and solution partner for advanced materials and electronic components serving the electronics industry.
             </p>
           </div>
 
@@ -52,19 +52,24 @@ const Footer = () => {
               <li className="flex items-start gap-3">
                 <MapPin className="h-5 w-5 text-accent shrink-0 mt-0.5" />
                 <span className="text-secondary-foreground/80">
-                  No 39, Ejipura Main Road, Near 24th Cross, Ejipura, Bengaluru 560047
+                  #39, Ejipura Main Road, Ejipura, Bangalore – 560047
                 </span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="h-5 w-5 text-accent shrink-0" />
-                <a href="tel:+919686118846" className="text-secondary-foreground/80 hover:text-accent transition-colors">
-                  +91 96861 18846
-                </a>
+                <div className="text-secondary-foreground/80">
+                  <a href="tel:+919686118846" className="hover:text-accent transition-colors block">
+                    +91-9686118846
+                  </a>
+                  <a href="tel:08049723882" className="hover:text-accent transition-colors block text-sm">
+                    080-49723882
+                  </a>
+                </div>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="h-5 w-5 text-accent shrink-0" />
-                <a href="mailto:karthik.ramesh@duramettechnologies.com" className="text-secondary-foreground/80 hover:text-accent transition-colors text-sm">
-                  karthik.ramesh@duramettechnologies.com
+                <a href="mailto:sales@duramettechnologies.com" className="text-secondary-foreground/80 hover:text-accent transition-colors text-sm">
+                  sales@duramettechnologies.com
                 </a>
               </li>
             </ul>
@@ -75,26 +80,21 @@ const Footer = () => {
             <h4 className="font-heading font-bold text-lg mb-6">Follow Us</h4>
             <div className="flex gap-4">
               <a
-                href="#"
+                href="https://www.linkedin.com/in/duramet-performance-metals-130244235/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center hover:bg-accent hover:text-accent-foreground transition-all duration-300"
                 aria-label="LinkedIn"
               >
                 <Linkedin className="h-5 w-5" />
               </a>
-              <a
-                href="#"
-                className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center hover:bg-accent hover:text-accent-foreground transition-all duration-300"
-                aria-label="Facebook"
-              >
-                <Facebook className="h-5 w-5" />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center hover:bg-accent hover:text-accent-foreground transition-all duration-300"
-                aria-label="Twitter"
-              >
-                <Twitter className="h-5 w-5" />
-              </a>
+            </div>
+            <div className="mt-6">
+              <p className="text-secondary-foreground/60 text-sm">
+                <strong>Working Hours:</strong><br />
+                Monday – Saturday<br />
+                10:00 AM – 6:30 PM
+              </p>
             </div>
           </div>
         </div>
@@ -119,12 +119,7 @@ const Footer = () => {
         {/* Copyright */}
         <div className="mt-8 pt-8 border-t border-secondary-foreground/20 text-center">
           <p className="text-secondary-foreground/60 text-sm">
-            © {new Date().getFullYear()} Duramet Technologies. All rights reserved.
-          </p>
-          <p className="text-secondary-foreground/60 text-sm mt-2">
-            <a href="https://www.duramettechnologies.com" className="hover:text-accent transition-colors">
-              www.duramettechnologies.com
-            </a>
+            © 2025 Duramet Technologies. All Rights Reserved.
           </p>
         </div>
       </div>

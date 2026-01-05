@@ -1,16 +1,26 @@
 import { motion } from "framer-motion";
 
+// Partner logos - using public folder paths
+const partnerLogos: { [key: string]: string } = {
+  PDC: "/logo/PDC_byBrady_Logo_white_RGB.svg",
+  Henkel: "/logo/Henkel-Logo.svg",
+  "3M": "/logo/3m-2.svg",
+  Walsin: "/logo/Walsin-logo-1140x570.jpg_1.svg",
+  Kamaya: "/logo/Kamaya_600x600_1.svg",
+  Frontier: "/logo/Frontier_communications_logo_2023.svg",
+  Nitsuku: "/logo/nisstuko1.svg",
+};
+
 const PartnersCarousel = () => {
-  // Partner companies - using placeholder names for industrial companies
+  // Partner companies - Associated Brands with logo images
   const partners = [
-    { name: "Bosch", logo: "BOSCH" },
-    { name: "SKF", logo: "SKF" },
-    { name: "Siemens", logo: "SIEMENS" },
-    { name: "ABB", logo: "ABB" },
-    { name: "Schneider", logo: "SCHNEIDER" },
-    { name: "Honeywell", logo: "HONEYWELL" },
-    { name: "Rockwell", logo: "ROCKWELL" },
-    { name: "Parker", logo: "PARKER" },
+    { name: "PDC", logo: partnerLogos.PDC },
+    { name: "Henkel", logo: partnerLogos.Henkel },
+    { name: "3M", logo: partnerLogos["3M"] },
+    { name: "Walsin", logo: partnerLogos.Walsin },
+    { name: "Kamaya", logo: partnerLogos.Kamaya },
+    { name: "Frontier", logo: partnerLogos.Frontier },
+    { name: "Nitsuku", logo: partnerLogos.Nitsuku },
   ];
 
   // Duplicate for seamless loop
@@ -27,10 +37,10 @@ const PartnersCarousel = () => {
           className="text-center"
         >
           <h2 className="font-heading font-bold text-2xl md:text-3xl text-foreground mb-3">
-            Trusted by Industry Leaders
+            Associated with World-Class Manufacturers
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto">
-            We partner with world-renowned manufacturers to bring you the best industrial solutions
+            We partner with globally recognized manufacturers to deliver reliable, high-performance material solutions
           </p>
         </motion.div>
       </div>
@@ -43,10 +53,16 @@ const PartnersCarousel = () => {
               key={index}
               className="flex-shrink-0 mx-8 flex items-center justify-center"
             >
-              <div className="bg-background rounded-lg px-10 py-6 shadow-sm border border-border hover:shadow-md transition-shadow duration-300">
-                <span className="font-heading font-bold text-xl text-steel tracking-wider">
-                  {partner.logo}
-                </span>
+              <div className="bg-background rounded-lg px-10 py-6 shadow-sm border border-border hover:shadow-md transition-shadow duration-300 flex items-center justify-center">
+                <img 
+                  src={partner.logo} 
+                  alt={partner.name} 
+                  className={`h-12 w-auto object-contain max-w-[150px] ${
+                    partner.name === "PDC" ? "brightness-0" : ""
+                  }`}
+                  style={partner.name === "PDC" ? { filter: "brightness(0)" } : {}}
+                  loading="lazy"
+                />
               </div>
             </div>
           ))}

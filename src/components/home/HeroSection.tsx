@@ -6,9 +6,9 @@ import heroBg from "@/assets/hero-bg.jpg";
 
 const HeroSection = () => {
   const features = [
-    "Precision Engineering Solutions",
-    "Trusted Industry Partner",
-    "Quality Certified Products",
+    "PCB • Thermal Interface Materials",
+    "Potting • Conformal Coating",
+    "Low Pressure Molding • Gasketing",
   ];
 
   return (
@@ -32,7 +32,7 @@ const HeroSection = () => {
             transition={{ duration: 0.6 }}
           >
             <span className="inline-block font-heading font-semibold text-primary-foreground/90 text-sm uppercase tracking-widest mb-4 bg-primary-foreground/10 px-4 py-2 rounded-full backdrop-blur-sm">
-              Industrial Distributor & Solution Partner
+              Authorized Distributor & Solution Partner
             </span>
           </motion.div>
 
@@ -42,17 +42,26 @@ const HeroSection = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-primary-foreground leading-tight mb-6"
           >
-            Powering Industries with{" "}
-            <span className="text-accent">Precision</span> & Excellence
+            Complete Material Solutions for{" "}
+            <span className="text-accent">Electronics Manufacturing</span>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-primary-foreground/90 text-lg md:text-xl leading-relaxed mb-8 max-w-2xl"
+            className="text-primary-foreground/90 text-lg md:text-xl leading-relaxed mb-4 max-w-2xl"
           >
-            Duramet Technologies delivers high-quality industrial components and engineering solutions to manufacturers across automotive, aerospace, oil & gas, and more.
+            Authorized distributors for electronic components, thermal interface materials, circuit board protection, and gasketing solutions.
+          </motion.p>
+
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.25 }}
+            className="text-primary-foreground/80 text-base md:text-lg leading-relaxed mb-8 max-w-3xl"
+          >
+            Duramet Technologies delivers a 360-degree solution for PCB and electronic manufacturing, supporting customers from component level to enclosure level with reliable, high-performance material solutions.
           </motion.p>
 
           {/* Features */}

@@ -31,10 +31,10 @@ const iconMap: { [key: string]: React.ReactNode } = {
 
 const imageMap: { [key: string]: string } = {
   automotive: automotiveImg,
-  aerospace: aerospaceImg,
-  "oil-gas": oilGasImg,
-  "power-generation": powerImg,
-  "heavy-machinery": machineryImg,
+  "aerospace-defence": aerospaceImg,
+  "power-industrial-automation": powerImg,
+  components: powerImg,
+  rail: powerImg,
 };
 
 const enquirySchema = z.object({
@@ -87,11 +87,12 @@ const EnquiryForm = ({ industry, product, isProductNotListed, onClose }: Enquiry
       });
 
       onClose();
-    } catch (error) {
+    } catch (error: any) {
       console.error("Email Error:", error);
+      const errorMessage = error?.message || "Please try again.";
       toast({
         title: "Submission Failed",
-        description: "Please try again.",
+        description: errorMessage,
         variant: "destructive",
       });
     }

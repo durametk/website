@@ -52,19 +52,19 @@ const Footer = () => {
               <li className="flex items-start gap-3">
                 <MapPin className="h-5 w-5 text-accent shrink-0 mt-0.5" />
                 <span className="text-secondary-foreground/80">
-                  No 39, Ejipura Main Road, Near 24th Cross, Ejipura, Bengaluru 560047
+                  #39, Ejipura Main Road, Ejipura, Bangalore – 560047
                 </span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="h-5 w-5 text-accent shrink-0" />
                 <a href="tel:+919686118846" className="text-secondary-foreground/80 hover:text-accent transition-colors">
-                  +91 96861 18846
+                  +91-9686118846
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="h-5 w-5 text-accent shrink-0" />
-                <a href="mailto:karthik.ramesh@duramettechnologies.com" className="text-secondary-foreground/80 hover:text-accent transition-colors text-sm">
-                  karthik.ramesh@duramettechnologies.com
+                <a href="mailto:sales@duramettechnologies.com" className="text-secondary-foreground/80 hover:text-accent transition-colors text-sm">
+                  sales@duramettechnologies.com
                 </a>
               </li>
             </ul>
@@ -75,25 +75,13 @@ const Footer = () => {
             <h4 className="font-heading font-bold text-lg mb-6">Follow Us</h4>
             <div className="flex gap-4">
               <a
-                href="#"
+                href="https://www.linkedin.com/in/duramet-performance-metals-130244235/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center hover:bg-accent hover:text-accent-foreground transition-all duration-300"
                 aria-label="LinkedIn"
               >
                 <Linkedin className="h-5 w-5" />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center hover:bg-accent hover:text-accent-foreground transition-all duration-300"
-                aria-label="Facebook"
-              >
-                <Facebook className="h-5 w-5" />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center hover:bg-accent hover:text-accent-foreground transition-all duration-300"
-                aria-label="Twitter"
-              >
-                <Twitter className="h-5 w-5" />
               </a>
             </div>
           </div>

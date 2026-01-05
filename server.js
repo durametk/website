@@ -1,42 +1,44 @@
-// Vercel/Netlify Serverless Function for Resend
-// Deploy this to your serverless platform
+import express from 'express';
+import cors from 'cors';
+import { Resend } from 'resend';
 
-import { Resend } from "resend";
+const app = express();
+const PORT = process.env.PORT || 3001;
 
-const resend = new Resend(process.env.RESEND_API_KEY || "re_HRy7egPF_pBKnUwmUBmFybZ31UunB8j2V");
+// Resend API Key
+const RESEND_API_KEY = 're_HRy7egPF_pBKnUwmUBmFybZ31UunB8j2V';
+const resend = new Resend(RESEND_API_KEY);
 
-export default async function handler(req: any, res: any) {
-  // Handle CORS
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+// Middleware
+app.use(cors());
+app.use(express.json());
 
-  if (req.method === "OPTIONS") {
-    return res.status(200).end();
-  }
-
-  if (req.method !== "POST") {
-    return res.status(405).json({ message: "Method not allowed" });
-  }
-
+// Email API endpoint
+app.post('/api/send-email', async (req, res) => {
   try {
+    console.log('Received email request:', { 
+      name: req.body.name, 
+      email: req.body.email, 
+      industry: req.body.industry 
+    });
+    
     const { name, email, phone, industry, product, requirement, to_email } = req.body;
 
     // Validate required fields
     if (!name || !email || !phone || !industry || !requirement) {
+      console.error('Validation failed - missing required fields');
       return res.status(400).json({ 
-        success: false,
-        message: "Missing required fields: name, email, phone, industry, and requirement are required" 
+        message: 'Missing required fields: name, email, phone, industry, and requirement are required' 
       });
     }
 
     // Resend test mode only allows sending to account owner's email
     // Change this after verifying a domain in Resend
-    const recipientEmail = to_email || "aniketcoolshe@gmail.com";
+    const recipientEmail = to_email || 'aniketcoolshe@gmail.com';
 
     // Send email to company
     const { data, error } = await resend.emails.send({
-      from: "Duramet Technologies <onboarding@resend.dev>", // Update with your verified domain
+      from: 'Duramet Technologies <onboarding@resend.dev>',
       to: [recipientEmail],
       replyTo: email,
       subject: `New Enquiry from ${name} - ${industry}`,
@@ -50,7 +52,7 @@ export default async function handler(req: any, res: any) {
             <p style="margin: 10px 0;"><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
             <p style="margin: 10px 0;"><strong>Phone:</strong> <a href="tel:${phone}">${phone}</a></p>
             <p style="margin: 10px 0;"><strong>Industry:</strong> ${industry}</p>
-            <p style="margin: 10px 0;"><strong>Product:</strong> ${product || "N/A"}</p>
+            <p style="margin: 10px 0;"><strong>Product:</strong> ${product || 'N/A'}</p>
           </div>
           <div style="margin-top: 20px;">
             <h3 style="color: #333; margin-bottom: 10px;">Requirement Details:</h3>
@@ -66,10 +68,10 @@ export default async function handler(req: any, res: any) {
     });
 
     if (error) {
-      console.error("Resend error:", error);
+      console.error('Resend error:', error);
       return res.status(400).json({ 
         success: false,
-        message: error.message || "Failed to send email",
+        message: error.message || 'Failed to send email',
         error: error 
       });
     }
@@ -77,9 +79,9 @@ export default async function handler(req: any, res: any) {
     // Send auto-reply to user
     try {
       await resend.emails.send({
-        from: "Duramet Technologies <onboarding@resend.dev>",
+        from: 'Duramet Technologies <onboarding@resend.dev>',
         to: [email],
-        subject: "Thank you for your enquiry - Duramet Technologies",
+        subject: 'Thank you for your enquiry - Duramet Technologies',
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
             <h2 style="color: #333; border-bottom: 2px solid #0066cc; padding-bottom: 10px;">
@@ -113,20 +115,30 @@ export default async function handler(req: any, res: any) {
           </div>
         `,
       });
-      console.log("Auto-reply sent successfully to user");
+      console.log('Auto-reply sent successfully to user');
     } catch (autoReplyError) {
-      console.error("Failed to send auto-reply:", autoReplyError);
+      console.error('Failed to send auto-reply:', autoReplyError);
       // Don't fail the main request if auto-reply fails
     }
 
-    console.log("Email sent successfully:", data);
+    console.log('Email sent successfully:', data);
     return res.status(200).json({ success: true, data });
-  } catch (error: any) {
-    console.error("Server error:", error);
+  } catch (error) {
+    console.error('Server error:', error);
     return res.status(500).json({ 
       success: false,
-      message: error.message || "Internal server error",
+      message: error.message || 'Internal server error',
       error: error.toString()
     });
   }
-}
+});
+
+// Health check endpoint
+app.get('/api/health', (req, res) => {
+  res.json({ status: 'ok', message: 'Email API server is running' });
+});
+
+app.listen(PORT, () => {
+  console.log(`Email API server running on http://localhost:${PORT}`);
+});
+

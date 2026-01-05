@@ -77,11 +77,12 @@ const ContactSection = ({ prefilledIndustry, prefilledProduct, isProductNotListe
         industry: prefilledIndustry || "",
         requirement: "",
       });
-    } catch (error) {
+    } catch (error: any) {
       console.error("Email Error:", error);
+      const errorMessage = error?.message || "Please try again or contact us directly.";
       toast({
         title: "Submission Failed",
-        description: "Please try again or contact us directly.",
+        description: errorMessage,
         variant: "destructive",
       });
     }
@@ -116,8 +117,9 @@ const ContactSection = ({ prefilledIndustry, prefilledProduct, isProductNotListe
                 <div>
                   <h4 className="font-heading font-semibold text-foreground mb-1">Phone</h4>
                   <a href="tel:+919686118846" className="text-muted-foreground hover:text-accent transition-colors">
-                    +91 96861 18846
+                    +91-9686118846
                   </a>
+                  <p className="text-muted-foreground text-sm mt-1">Office: 080-497238825</p>
                 </div>
               </div>
 
@@ -127,8 +129,8 @@ const ContactSection = ({ prefilledIndustry, prefilledProduct, isProductNotListe
                 </div>
                 <div>
                   <h4 className="font-heading font-semibold text-foreground mb-1">Email</h4>
-                  <a href="mailto:karthik.ramesh@duramettechnologies.com" className="text-muted-foreground hover:text-accent transition-colors text-sm">
-                    karthik.ramesh@duramettechnologies.com
+                  <a href="mailto:sales@duramettechnologies.com" className="text-muted-foreground hover:text-accent transition-colors text-sm">
+                    sales@duramettechnologies.com
                   </a>
                 </div>
               </div>
@@ -140,9 +142,10 @@ const ContactSection = ({ prefilledIndustry, prefilledProduct, isProductNotListe
                 <div>
                   <h4 className="font-heading font-semibold text-foreground mb-1">Address</h4>
                   <p className="text-muted-foreground">
-                    No 39, Ejipura Main Road, Near 24th Cross,<br />
-                    Ejipura, Bengaluru 560047
+                    #39, Ejipura Main Road, Near 24th Cross,<br />
+                    Ejipura, Bangalore – 560047
                   </p>
+                  <p className="text-muted-foreground text-sm mt-1">Working Hours: Monday – Saturday | 10:00 AM – 6:30 PM</p>
                 </div>
               </div>
             </div>

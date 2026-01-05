@@ -20,10 +20,10 @@ const iconMap: { [key: string]: React.ReactNode } = {
 
 const imageMap: { [key: string]: string } = {
   automotive: automotiveImg,
-  aerospace: aerospaceImg,
-  "oil-gas": oilGasImg,
-  "power-generation": powerImg,
-  "heavy-machinery": machineryImg,
+  "aerospace-defence": aerospaceImg,
+  "power-industrial-automation": powerImg,
+  components: powerImg,
+  rail: powerImg,
 };
 
 const IndustriesSection = () => {

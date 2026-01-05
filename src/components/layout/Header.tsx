@@ -1,12 +1,22 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 import logo from "@/assets/logo.jpg";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navLinks = [
     { name: "Home", path: "/" },
@@ -30,9 +40,15 @@ const Header = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-border">
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      isScrolled 
+        ? "bg-background/95 backdrop-blur-md border-b border-border shadow-sm" 
+        : "bg-background/80 backdrop-blur-sm"
+    }`}>
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-20">
+        <div className={`flex items-center justify-between transition-all duration-300 ${
+          isScrolled ? "h-16" : "h-20"
+        }`}>
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3">
             <img src={logo} alt="Duramet Technologies" className="h-10 w-auto" />
@@ -57,6 +73,7 @@ const Header = () => {
                 {link.name}
               </Link>
             ))}
+            <ThemeToggle />
             <Button asChild variant="default" size="default">
               <Link to="/#contact">Get Quote</Link>
             </Button>
@@ -94,6 +111,10 @@ const Header = () => {
                   {link.name}
                 </Link>
               ))}
+              <div className="flex items-center justify-between pt-2 border-t border-border">
+                <span className="text-sm text-muted-foreground">Theme</span>
+                <ThemeToggle />
+              </div>
               <Button asChild variant="default" size="lg" className="mt-2">
                 <Link to="/#contact" onClick={() => handleNavClick("/#contact")}>
                   Get Quote

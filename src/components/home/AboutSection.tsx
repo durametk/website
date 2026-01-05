@@ -47,11 +47,16 @@ const AboutSection = () => {
               {stats.map((stat, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
-                  className="bg-card p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 text-center border border-border"
+                  initial={{ opacity: 0, y: 30, scale: 0.9 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  viewport={{ once: true, margin: "-30px" }}
+                  transition={{ 
+                    duration: 0.5, 
+                    delay: 0.3 + index * 0.1,
+                    ease: [0.25, 0.1, 0.25, 1]
+                  }}
+                  whileHover={{ y: -5, transition: { duration: 0.2 } }}
+                  className="bg-card p-8 rounded-xl shadow-lg transition-shadow duration-300 text-center border border-border hover:shadow-xl hover:shadow-primary/5"
                 >
                   <div className="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4 text-primary">
                     {stat.icon}

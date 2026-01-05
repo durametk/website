@@ -54,16 +54,20 @@ const IndustriesSection = () => {
           {industries.map((industry, index) => (
             <motion.div
               key={industry.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              initial={{ opacity: 0, y: 40, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ 
+                duration: 0.5, 
+                delay: index * 0.1,
+                ease: [0.25, 0.1, 0.25, 1]
+              }}
             >
               <Link
                 to={`/industries/${industry.slug}`}
                 className="group block h-full"
               >
-                <div className="relative h-full bg-card rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
+                <div className="relative h-full bg-card rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-2 hover:shadow-primary/10">
                   {/* Image */}
                   <div className="relative h-48 overflow-hidden">
                     <img

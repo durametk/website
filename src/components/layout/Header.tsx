@@ -36,7 +36,7 @@ const Header = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3">
             <img src={logo} alt="Duramet Technologies" className="h-10 w-auto" />
-            <span className="font-heading font-bold text-xl text-foreground hidden sm:block">
+            <span className="font-heading font-bold text-xl text-foreground">
               Duramet Technologies
             </span>
           </Link>

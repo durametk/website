@@ -34,27 +34,24 @@ const shuffleArray = <T,>(array: T[]): T[] => {
 };
 
 const distributeLogos = (allLogos: Logo[], columnCount: number): Logo[][] => {
-  const shuffled = shuffleArray(allLogos);
   const columns: Logo[][] = Array.from({ length: columnCount }, () => []);
-
-  shuffled.forEach((logo, index) => {
-    columns[index % columnCount].push(logo);
-  });
-
-  const maxLength = Math.max(...columns.map((col) => col.length));
-  columns.forEach((col) => {
-    while (col.length < maxLength) {
-      col.push(shuffled[Math.floor(Math.random() * shuffled.length)]);
-    }
-  });
+  
+  // Each column gets a differently shuffled copy of all logos
+  for (let i = 0; i < columnCount; i++) {
+    // Create a unique shuffle for each column with different starting points
+    const shuffled = shuffleArray(allLogos);
+    // Rotate the array by different amounts to ensure different logos show at the same time
+    const rotated = [...shuffled.slice(i % shuffled.length), ...shuffled.slice(0, i % shuffled.length)];
+    columns[i] = rotated;
+  }
 
   return columns;
 };
 
 const LogoColumn: React.FC<LogoColumnProps> = React.memo(
   ({ logos, index, currentTime }) => {
-    const cycleInterval = 2000;
-    const columnDelay = index * 200;
+    const cycleInterval = 2500;
+    const columnDelay = index * 500; // Larger stagger between columns
     const adjustedTime = (currentTime + columnDelay) % (cycleInterval * logos.length);
     const currentIndex = Math.floor(adjustedTime / cycleInterval);
 

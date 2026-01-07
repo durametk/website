@@ -1,31 +1,18 @@
 import { motion } from "framer-motion";
+import { InfiniteSlider } from "@/components/ui/infinite-slider";
 
 // Partner logos - using public folder paths
-const partnerLogos: { [key: string]: string } = {
-  PDC: "/logo/PDC_byBrady_Logo_white_RGB.svg",
-  Henkel: "/logo/Henkel-Logo.svg",
-  "3M": "/logo/3m-2.svg",
-  Walsin: "/logo/Walsin-logo-1140x570.jpg_1.svg",
-  Kamaya: "/logo/Kamaya_600x600_1.svg",
-  Frontier: "/logo/Frontier_communications_logo_2023.svg",
-  Nitsuku: "/logo/nisstuko1.svg",
-};
+const partnerLogos = [
+  { name: "PDC", img: "/logo/PDC_byBrady_Logo_white_RGB.svg", invert: true },
+  { name: "Henkel", img: "/logo/Henkel-Logo.svg", invert: false },
+  { name: "3M", img: "/logo/3m-2.svg", invert: false },
+  { name: "Walsin", img: "/logo/Walsin-logo-1140x570.jpg_1.svg", invert: false },
+  { name: "Kamaya", img: "/logo/Kamaya_600x600_1.svg", invert: false },
+  { name: "Frontier", img: "/logo/Frontier_communications_logo_2023.svg", invert: false },
+  { name: "Nitsuku", img: "/logo/nisstuko1.svg", invert: false },
+];
 
 const PartnersCarousel = () => {
-  // Partner companies - Associated Brands with logo images
-  const partners = [
-    { name: "PDC", logo: partnerLogos.PDC },
-    { name: "Henkel", logo: partnerLogos.Henkel },
-    { name: "3M", logo: partnerLogos["3M"] },
-    { name: "Walsin", logo: partnerLogos.Walsin },
-    { name: "Kamaya", logo: partnerLogos.Kamaya },
-    { name: "Frontier", logo: partnerLogos.Frontier },
-    { name: "Nitsuku", logo: partnerLogos.Nitsuku },
-  ];
-
-  // Duplicate for seamless loop
-  const allPartners = [...partners, ...partners];
-
   return (
     <section className="py-16 bg-muted overflow-hidden">
       <div className="container mx-auto px-4 mb-10">
@@ -45,33 +32,23 @@ const PartnersCarousel = () => {
         </motion.div>
       </div>
 
-      {/* Scrolling Container */}
-      <div className="relative">
-        <div className="flex animate-marquee">
-          {allPartners.map((partner, index) => (
-            <div
-              key={index}
-              className="flex-shrink-0 mx-8 flex items-center justify-center"
-            >
-              <div className="bg-background rounded-lg px-10 py-6 shadow-sm border border-border hover:shadow-md transition-shadow duration-300 flex items-center justify-center">
-                <img 
-                  src={partner.logo} 
-                  alt={partner.name} 
-                  className={`h-12 w-auto object-contain max-w-[150px] ${
-                    partner.name === "PDC" ? "brightness-0" : ""
-                  }`}
-                  style={partner.name === "PDC" ? { filter: "brightness(0)" } : {}}
-                  loading="lazy"
-                />
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Gradient Overlays */}
-        <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-muted to-transparent pointer-events-none" />
-        <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-muted to-transparent pointer-events-none" />
-      </div>
+      {/* Infinite Slider */}
+      <InfiniteSlider gap={24} duration={20} durationOnHover={40}>
+        {partnerLogos.map((logo) => (
+          <div
+            key={logo.name}
+            className="flex items-center justify-center h-20 w-40 md:h-24 md:w-48 bg-background rounded-lg shadow-sm border border-border px-4"
+          >
+            <img
+              src={logo.img}
+              alt={logo.name}
+              className={`h-12 w-auto max-h-[60%] max-w-[80%] object-contain ${
+                logo.invert ? "brightness-0" : ""
+              }`}
+            />
+          </div>
+        ))}
+      </InfiniteSlider>
     </section>
   );
 };

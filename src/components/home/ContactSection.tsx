@@ -110,44 +110,59 @@ const ContactSection = ({ prefilledIndustry, prefilledProduct, isProductNotListe
             </p>
 
             <div className="space-y-6">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
-                  <Phone className="h-5 w-5 text-primary" />
-                </div>
-                <div>
-                  <h4 className="font-heading font-semibold text-foreground mb-1">Phone</h4>
-                  <a href="tel:+919686118846" className="text-muted-foreground hover:text-accent transition-colors">
-                    +91-9686118846
-                  </a>
-                  <p className="text-muted-foreground text-sm mt-1">Office: 080-497238825</p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
-                  <Mail className="h-5 w-5 text-primary" />
-                </div>
-                <div>
-                  <h4 className="font-heading font-semibold text-foreground mb-1">Email</h4>
-                  <a href="mailto:sales@duramettechnologies.com" className="text-muted-foreground hover:text-accent transition-colors text-sm">
-                    sales@duramettechnologies.com
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
-                  <MapPin className="h-5 w-5 text-primary" />
-                </div>
-                <div>
-                  <h4 className="font-heading font-semibold text-foreground mb-1">Address</h4>
-                  <p className="text-muted-foreground">
-                    #39, Ejipura Main Road, Near 24th Cross,<br />
-                    Ejipura, Bangalore – 560047
-                  </p>
-                  <p className="text-muted-foreground text-sm mt-1">Working Hours: Monday – Saturday | 10:00 AM – 6:30 PM</p>
-                </div>
-              </div>
+              {[
+                {
+                  icon: <Phone className="h-5 w-5 text-primary" />,
+                  title: "Phone",
+                  content: (
+                    <>
+                      <a href="tel:+919686118846" className="text-muted-foreground hover:text-primary transition-colors">
+                        +91-9686118846
+                      </a>
+                      <p className="text-muted-foreground text-sm mt-1">Office: 080-497238825</p>
+                    </>
+                  ),
+                },
+                {
+                  icon: <Mail className="h-5 w-5 text-primary" />,
+                  title: "Email",
+                  content: (
+                    <a href="mailto:sales@duramettechnologies.com" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+                      sales@duramettechnologies.com
+                    </a>
+                  ),
+                },
+                {
+                  icon: <MapPin className="h-5 w-5 text-primary" />,
+                  title: "Address",
+                  content: (
+                    <>
+                      <p className="text-muted-foreground">
+                        #39, Ejipura Main Road, Near 24th Cross,<br />
+                        Ejipura, Bangalore – 560047
+                      </p>
+                      <p className="text-muted-foreground text-sm mt-1">Working Hours: Monday – Saturday | 10:00 AM – 6:30 PM</p>
+                    </>
+                  ),
+                },
+              ].map((item, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: 0.2 + index * 0.1 }}
+                  className="flex items-start gap-4 group"
+                >
+                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
+                    {item.icon}
+                  </div>
+                  <div>
+                    <h4 className="font-heading font-semibold text-foreground mb-1">{item.title}</h4>
+                    {item.content}
+                  </div>
+                </motion.div>
+              ))}
             </div>
           </motion.div>
 

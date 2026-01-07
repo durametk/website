@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { ThemeToggle } from "@/components/ui/theme-toggle";
 import logo from "@/assets/logo.jpg";
 
 const Header = () => {
@@ -21,7 +20,6 @@ const Header = () => {
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "Industries", path: "/industries" },
-    { name: "Contact", path: "/#contact" },
   ];
 
   const isActive = (path: string) => {
@@ -73,9 +71,8 @@ const Header = () => {
                 {link.name}
               </Link>
             ))}
-            <ThemeToggle />
             <Button asChild variant="default" size="default">
-              <Link to="/#contact">Get Quote</Link>
+              <Link to="/#contact">Contact</Link>
             </Button>
           </nav>
 
@@ -111,13 +108,9 @@ const Header = () => {
                   {link.name}
                 </Link>
               ))}
-              <div className="flex items-center justify-between pt-2 border-t border-border">
-                <span className="text-sm text-muted-foreground">Theme</span>
-                <ThemeToggle />
-              </div>
               <Button asChild variant="default" size="lg" className="mt-2">
                 <Link to="/#contact" onClick={() => handleNavClick("/#contact")}>
-                  Get Quote
+                  Contact
                 </Link>
               </Button>
             </div>

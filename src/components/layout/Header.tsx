@@ -37,6 +37,15 @@ const Header = () => {
     }
   };
 
+  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    // If already on home page, scroll to top
+    if (location.pathname === "/") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+    // Otherwise, let the Link navigate normally
+  };
+
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled 
@@ -48,7 +57,7 @@ const Header = () => {
           isScrolled ? "h-16" : "h-20"
         }`}>
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3">
+          <Link to="/" className="flex items-center gap-3" onClick={handleLogoClick}>
             <img src={logo} alt="Duramet Technologies" className="h-10 w-auto" />
             <span className="font-heading font-bold text-xl text-foreground">
               Duramet Technologies

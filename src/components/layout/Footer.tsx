@@ -1,7 +1,6 @@
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Mail, Phone, MapPin, Linkedin } from "lucide-react";
 import logo from "@/assets/logo.jpg";
-import { LocationMap } from "@/components/ui/expand-map";
 
 const Footer = () => {
   const navigate = useNavigate();
@@ -127,12 +126,17 @@ const Footer = () => {
         {/* Map Section */}
         <div className="mt-12 pt-8 border-t border-secondary-foreground/20">
           <h4 className="font-heading font-bold text-lg mb-6">Our Location</h4>
-          <div className="max-w-md">
-            <LocationMap 
-              address="#39, Ejipura Main Road, Ejipura, Bangalore – 560047"
-              mapUrl="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.2772!2d77.6193!3d12.9526!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae15c0d0a0b0a0%3A0x0!2sEjipura%2C%20Bengaluru%2C%20Karnataka%20560047!5e0!3m2!1sen!2sin!4v1234567890"
-              googleMapsLink="https://www.google.com/maps/search/?api=1&query=Ejipura+Main+Road+Bangalore+560047"
-            />
+          <div className="rounded-lg overflow-hidden h-64 w-full">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.2772!2d77.6193!3d12.9526!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae15c0d0a0b0a0%3A0x0!2sEjipura%2C%20Bengaluru%2C%20Karnataka%20560047!5e0!3m2!1sen!2sin!4v1234567890"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Duramet Technologies Location"
+            ></iframe>
           </div>
         </div>
 

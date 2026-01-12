@@ -54,7 +54,7 @@ const Header = () => {
     }`}>
       <div className="container mx-auto px-4">
         <div className={`flex items-center justify-between transition-all duration-300 ${
-          isScrolled ? "h-16" : "h-20"
+          isScrolled ? "h-12" : "h-14"
         }`}>
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3" onClick={handleLogoClick}>

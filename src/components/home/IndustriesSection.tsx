@@ -50,7 +50,11 @@ const IndustriesSection = () => {
         </motion.div>
 
         {/* Industry Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="relative">
+          {/* White blur overlay effect */}
+          <div className="absolute -inset-4 bg-white/30 backdrop-blur-sm rounded-3xl -z-10" />
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-4">
           {industries.map((industry, index) => (
             <motion.div
               key={industry.id}
@@ -100,6 +104,7 @@ const IndustriesSection = () => {
               </Link>
             </motion.div>
           ))}
+          </div>
         </div>
 
         {/* View All Button */}

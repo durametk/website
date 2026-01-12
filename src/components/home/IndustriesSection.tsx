@@ -51,8 +51,8 @@ const IndustriesSection = () => {
 
         {/* Industry Cards Grid */}
         <div className="relative">
-          {/* White blur overlay effect */}
-          <div className="absolute -inset-4 bg-white/30 backdrop-blur-sm rounded-3xl -z-10" />
+          {/* Subtle white blur overlay effect */}
+          <div className="absolute -inset-2 bg-white/10 backdrop-blur-[2px] rounded-2xl -z-10" />
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-4">
           {industries.map((industry, index) => (

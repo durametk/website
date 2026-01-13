@@ -3,13 +3,13 @@ import { InfiniteSlider } from "@/components/ui/infinite-slider";
 
 // Partner logos - using public folder paths
 const partnerLogos = [
-  { name: "PDC", img: "/logo/PDC_byBrady_Logo_white_RGB.svg", darkBg: true },
-  { name: "Henkel", img: "/logo/Henkel-Logo.svg", darkBg: false },
-  { name: "3M", img: "/logo/3m-2.svg", darkBg: false },
-  { name: "Walsin", img: "/logo/Walsin-logo-1140x570.jpg_1.svg", darkBg: false },
-  { name: "Kamaya", img: "/logo/Kamaya_600x600_1.svg", darkBg: false },
-  { name: "Frontier", img: "/logo/Frontier_communications_logo_2023.svg", darkBg: false },
-  { name: "Nitsuku", img: "/logo/nisstuko1.svg", darkBg: false },
+  { name: "PDC", img: "/logo/pdc.jpg" },
+  { name: "Henkel", img: "/logo/Henkel-Logo.svg" },
+  { name: "3M", img: "/logo/3m-2.svg" },
+  { name: "Walsin", img: "/logo/Walsin-logo-1140x570.jpg_1.svg" },
+  { name: "Kamaya", img: "/logo/Kamaya_600x600_1.svg" },
+  { name: "Frontier", img: "/logo/Frontier_communications_logo_2023.svg" },
+  { name: "Nitsuku", img: "/logo/nisstuko1.svg" },
 ];
 
 const PartnersCarousel = () => {
@@ -37,9 +37,7 @@ const PartnersCarousel = () => {
         {partnerLogos.map((logo) => (
           <div
             key={logo.name}
-            className={`flex items-center justify-center h-20 w-40 md:h-24 md:w-48 rounded-lg shadow-sm border border-border px-4 ${
-              logo.darkBg ? "bg-slate-800" : "bg-background"
-            }`}
+            className="flex items-center justify-center h-20 w-40 md:h-24 md:w-48 rounded-lg shadow-sm border border-border px-4 bg-background"
           >
             <img
               src={logo.img}

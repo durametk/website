@@ -6,9 +6,9 @@ import { industries } from "@/data/industries";
 
 import automotiveImg from "@/assets/industry-automotive.jpg";
 import aerospaceImg from "@/assets/industry-aerospace.jpg";
-import oilGasImg from "@/assets/industry-oil-gas.jpg";
 import powerImg from "@/assets/industry-power.jpg";
-import machineryImg from "@/assets/industry-heavy-machinery.jpg";
+import componentsImg from "@/assets/industry-components.jpg";
+import railImg from "@/assets/industry-rail.jpg";
 
 const iconMap: { [key: string]: React.ReactNode } = {
   car: <Car className="h-8 w-8" />,
@@ -22,8 +22,8 @@ const imageMap: { [key: string]: string } = {
   automotive: automotiveImg,
   "aerospace-defence": aerospaceImg,
   "power-industrial-automation": powerImg,
-  components: powerImg,
-  rail: powerImg,
+  components: componentsImg,
+  rail: railImg,
 };
 
 const IndustriesSection = () => {

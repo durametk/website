@@ -10,7 +10,7 @@ We've switched from Resend API to **Netlify Forms** - a built-in feature that re
 - ✅ Works immediately after deployment
 - ✅ Built-in spam protection
 - ✅ Free tier: 100 submissions/month
-- ✅ Emails sent directly to `sales@duramettechnologies.com`
+- ✅ Emails sent directly to `karthik.ramesh@duramettechnologies.com`
 
 ## 📋 Forms Configured
 
@@ -38,7 +38,7 @@ We've switched from Resend API to **Netlify Forms** - a built-in feature that re
 4. Click **Add notification**
 5. Select **Email notification**
 6. Configure:
-   - **To**: `sales@duramettechnologies.com`
+   - **To**: `karthik.ramesh@duramettechnologies.com`
    - **From**: `noreply@duramettechnologies.com` (or leave default)
    - **Subject**: `New Contact Form Submission` (or customize)
 7. Click **Save**
@@ -48,12 +48,12 @@ We've switched from Resend API to **Netlify Forms** - a built-in feature that re
 1. Visit your live site
 2. Fill out the contact form
 3. Submit
-4. Check `sales@duramettechnologies.com` for the email!
+4. Check `karthik.ramesh@duramettechnologies.com` for the email!
 
 ## 📧 Email Configuration
 
 The forms are configured to send emails to:
-- **Recipient**: `sales@duramettechnologies.com` (set via hidden `_to` field)
+- **Recipient**: `karthik.ramesh@duramettechnologies.com` (set via hidden `_to` field)
 
 You can customize the email template in Netlify Dashboard:
 - Go to Forms → Settings → Email notifications
@@ -64,7 +64,7 @@ You can customize the email template in Netlify Dashboard:
 1. User fills out form on your website
 2. Form submits to Netlify (automatically handled)
 3. Netlify processes the form submission
-4. Email is sent to `sales@duramettechnologies.com`
+4. Email is sent to `karthik.ramesh@duramettechnologies.com`
 5. You receive the email with all form data
 
 ## 🔒 Spam Protection

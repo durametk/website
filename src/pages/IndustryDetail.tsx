@@ -13,7 +13,6 @@ import { getIndustryBySlug, Industry, Product } from "@/data/industries";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { sendContactEmail } from "@/lib/email";
 
 import automotiveImg from "@/assets/industry-automotive.jpg";
 import aerospaceImg from "@/assets/industry-aerospace.jpg";
@@ -154,7 +153,7 @@ const EnquiryForm = ({ industry, product, isProductNotListed, onClose }: Enquiry
           {/* Hidden fields for Netlify Forms */}
           <input type="hidden" name="form-name" value="product-enquiry" />
           <input type="hidden" name="bot-field" />
-          <input type="hidden" name="_to" value="sales@duramettechnologies.com" />
+          <input type="hidden" name="_to" value="karthik.ramesh@duramettechnologies.com" />
           <div>
             <Label htmlFor="name">Full Name *</Label>
             <Input

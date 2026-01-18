@@ -10,7 +10,6 @@ import { industries } from "@/data/industries";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { sendContactEmail } from "@/lib/email";
 
 const contactSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
@@ -199,7 +198,7 @@ const ContactSection = ({ prefilledIndustry, prefilledProduct, isProductNotListe
               {/* Honeypot field for spam protection */}
               <input type="hidden" name="bot-field" />
               {/* Hidden field to set recipient email */}
-              <input type="hidden" name="_to" value="sales@duramettechnologies.com" />
+              <input type="hidden" name="_to" value="karthik.ramesh@duramettechnologies.com" />
               <h3 className="font-heading font-bold text-2xl text-foreground mb-6">
                 {prefilledProduct ? "Product Enquiry" : "Send Us a Message"}
               </h3>

@@ -44,14 +44,11 @@ export const handler: Handler = async (event: HandlerEvent, context: HandlerCont
       };
     }
 
-    // Resend test mode only allows sending to account owner's email
-    const recipientEmail = to_email || "sales@duramettechnologies.com";
+    // Email recipient - using verified domain
+    const recipientEmail = to_email || "karthik.ramesh@duramettechnologies.com";
 
-    // TEMPORARY: Use test email until domain is verified
-    // Once domain is verified in Resend, change back to: noreply@duramettechnologies.com
-    const fromEmail = process.env.USE_VERIFIED_DOMAIN === 'true' 
-      ? "Duramet Technologies <noreply@duramettechnologies.com>"
-      : "Duramet Technologies <onboarding@resend.dev>"; // Temporary test email
+    // Using verified domain - nameservers moved to GoDaddy
+    const fromEmail = "Duramet Technologies <noreply@duramettechnologies.com>";
 
     // Send email to company
     const { data, error } = await resend.emails.send({

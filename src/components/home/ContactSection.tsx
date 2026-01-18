@@ -10,6 +10,7 @@ import { industries } from "@/data/industries";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import { sendContactEmail } from "@/lib/email";
 
 const contactSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
@@ -55,27 +56,14 @@ const ContactSection = ({ prefilledIndustry, prefilledProduct, isProductNotListe
 
   const onSubmit = async (data: ContactFormData) => {
     try {
-      // Use Netlify Forms - no API needed!
-      const formData = new FormData();
-      formData.append('form-name', 'contact-form');
-      formData.append('name', data.name);
-      formData.append('email', data.email);
-      formData.append('phone', data.phone);
-      formData.append('industry', data.industry);
-      formData.append('requirement', data.requirement);
-      if (prefilledProduct) {
-        formData.append('product', prefilledProduct);
-      }
-
-      const response = await fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formData as any).toString(),
+      await sendContactEmail({
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+        industry: data.industry,
+        requirement: data.requirement,
+        product: prefilledProduct,
       });
-
-      if (!response.ok) {
-        throw new Error('Form submission failed');
-      }
       
       toast({
         title: "Enquiry Submitted Successfully!",
@@ -90,7 +78,7 @@ const ContactSection = ({ prefilledIndustry, prefilledProduct, isProductNotListe
         requirement: "",
       });
     } catch (error: any) {
-      console.error("Form Error:", error);
+      console.error("Email Error:", error);
       const errorMessage = error?.message || "Please try again or contact us directly.";
       toast({
         title: "Submission Failed",
@@ -185,20 +173,7 @@ const ContactSection = ({ prefilledIndustry, prefilledProduct, isProductNotListe
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <form 
-              name="contact-form" 
-              method="POST" 
-              data-netlify="true" 
-              netlify-honeypot="bot-field"
-              onSubmit={handleSubmit(onSubmit)} 
-              className="bg-card rounded-xl p-8 shadow-xl border border-border"
-            >
-              {/* Hidden field for Netlify Forms */}
-              <input type="hidden" name="form-name" value="contact-form" />
-              {/* Honeypot field for spam protection */}
-              <input type="hidden" name="bot-field" />
-              {/* Hidden field to set recipient email */}
-              <input type="hidden" name="_to" value="karthik.ramesh@duramettechnologies.com" />
+            <form onSubmit={handleSubmit(onSubmit)} className="bg-card rounded-xl p-8 shadow-xl border border-border">
               <h3 className="font-heading font-bold text-2xl text-foreground mb-6">
                 {prefilledProduct ? "Product Enquiry" : "Send Us a Message"}
               </h3>

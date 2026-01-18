@@ -21,7 +21,7 @@ export const sendContactEmail = async (data: ContactFormData): Promise<void> => 
       },
       body: JSON.stringify({
         ...data,
-        to_email: "sales@duramettechnologies.com",
+        to_email: "karthik.ramesh@duramettechnologies.com",
       }),
     });
 

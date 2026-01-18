@@ -13,6 +13,7 @@ import { getIndustryBySlug, Industry, Product } from "@/data/industries";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import { sendContactEmail } from "@/lib/email";
 
 import automotiveImg from "@/assets/industry-automotive.jpg";
 import aerospaceImg from "@/assets/industry-aerospace.jpg";
@@ -71,25 +72,14 @@ const EnquiryForm = ({ industry, product, isProductNotListed, onClose }: Enquiry
 
   const onSubmit = async (data: EnquiryFormData) => {
     try {
-      // Use Netlify Forms - no API needed!
-      const formData = new FormData();
-      formData.append('form-name', 'product-enquiry');
-      formData.append('name', data.name);
-      formData.append('email', data.email);
-      formData.append('phone', data.phone);
-      formData.append('requirement', data.requirement);
-      formData.append('industry', industry.name);
-      formData.append('product', isProductNotListed ? "Product Not Listed" : product?.name || "");
-
-      const response = await fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formData as any).toString(),
+      await sendContactEmail({
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+        requirement: data.requirement,
+        industry: industry.name,
+        product: isProductNotListed ? "Product Not Listed" : product?.name,
       });
-
-      if (!response.ok) {
-        throw new Error('Form submission failed');
-      }
       
       toast({
         title: "Enquiry Submitted!",
@@ -98,7 +88,7 @@ const EnquiryForm = ({ industry, product, isProductNotListed, onClose }: Enquiry
 
       onClose();
     } catch (error: any) {
-      console.error("Form Error:", error);
+      console.error("Email Error:", error);
       const errorMessage = error?.message || "Please try again.";
       toast({
         title: "Submission Failed",
@@ -142,18 +132,7 @@ const EnquiryForm = ({ industry, product, isProductNotListed, onClose }: Enquiry
           )}
         </p>
 
-        <form 
-          name="product-enquiry" 
-          method="POST" 
-          data-netlify="true" 
-          netlify-honeypot="bot-field"
-          onSubmit={handleSubmit(onSubmit)} 
-          className="space-y-4"
-        >
-          {/* Hidden fields for Netlify Forms */}
-          <input type="hidden" name="form-name" value="product-enquiry" />
-          <input type="hidden" name="bot-field" />
-          <input type="hidden" name="_to" value="karthik.ramesh@duramettechnologies.com" />
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div>
             <Label htmlFor="name">Full Name *</Label>
             <Input

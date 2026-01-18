@@ -47,7 +47,7 @@ export const handler: Handler = async (event: HandlerEvent, context: HandlerCont
     // Email recipient - using verified domain
     const recipientEmail = to_email || "karthik.ramesh@duramettechnologies.com";
 
-    // Using verified domain - nameservers moved to GoDaddy
+    // Using verified domain - domain is verified in Resend
     const fromEmail = "Duramet Technologies <noreply@duramettechnologies.com>";
 
     // Send email to company
@@ -97,7 +97,7 @@ export const handler: Handler = async (event: HandlerEvent, context: HandlerCont
     // Send auto-reply to user
     try {
       await resend.emails.send({
-        from: fromEmail,
+        from: "Duramet Technologies <noreply@duramettechnologies.com>",
         to: [email],
         subject: "Thank you for your enquiry - Duramet Technologies",
         html: `

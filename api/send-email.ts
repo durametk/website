@@ -33,7 +33,7 @@ export default async function handler(req: any, res: any) {
     // Email recipient - using verified domain
     const recipientEmail = to_email || "karthik.ramesh@duramettechnologies.com";
 
-    // Using verified domain - nameservers moved to GoDaddy
+    // Using verified domain - domain is verified in Resend
     const fromEmail = "Duramet Technologies <noreply@duramettechnologies.com>";
 
     // Send email to company
